@@ -2,7 +2,13 @@
 
 
 static void activate (GtkApplication *app, gpointer user_data) {
-  // gtk code comes here
+  GtkWidget *window;
+
+  window = gtk_application_window_new (app);
+  
+
+
+  gtk_widget_show_all (window);
 }
 
 
@@ -13,7 +19,7 @@ int main(int argc, char **argv) {
 
   app = gtk_application_new ("testid.testid2", G_APPLICATION_FLAGS_NONE);
 
-  g_signal_connect (app, "action", G_CALLBACK(activate), NULL);
+  g_signal_connect (app, "activate", G_CALLBACK(activate), NULL);
 
   ret = g_application_run (G_APPLICATION(app), argc, argv);
 
